@@ -2,7 +2,7 @@
 
 # SET COMMIT ID BELOW!!!
 
-FROM ubuntu:20.04 AS build
+FROM ubuntu:22.04 AS build
 
 LABEL maintainer="Ben Mares <services-docker-build-s3fs@tensorial.com>" \
       name="docker-build-s3fs" \
@@ -59,14 +59,14 @@ ARG SCRIPT_DEST_DIR=/usr/local/bin
 
 # The id (either hash or alias) of the default commit to build:
 
-  ARG COMMIT_ID=v1.91
+  ARG COMMIT_ID=v1.94
 
 #   Another example:
 #     ARG COMMIT_ID=e0712f4
 
 # The latest release of s3fs from the time of the above commit
 
-  ARG S3FS_VERSION=1.91
+  ARG S3FS_VERSION=1.94
 
 ###################################
 ###################################
@@ -103,7 +103,7 @@ ARG SCRIPT_DEST_DIR=/usr/local/bin
 # i.e. the output of:
 #   date -u +"%Y-%m-%d %H:%M:%S"
 
-  ARG BUILD_TIMESTAMP="2021-08-15 20:00:00"
+  ARG BUILD_TIMESTAMP="2024-08-15 20:00:00"
 
   COPY ${SCRIPT_SOURCE_DIR}/060-build-package.sh ${SCRIPT_DEST_DIR}
   RUN 060-build-package.sh
