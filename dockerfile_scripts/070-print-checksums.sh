@@ -32,14 +32,14 @@ EOF
 cat <<EOF
 ### md5sums FILE CONTENTS
 
-$(ar -p *.deb control.tar.xz | tar xJO ./md5sums)
+$(ar -p *.deb control.tar.zst | tar xO --zstd ./md5sums)
 
 
 EOF
 
 print_size_and_checksums *.deb
 
-ar -p *.deb data.tar.xz | tar xJ --strip-components=3 ./usr/bin/s3fs
+ar -p *.deb data.tar.zst | tar x --zstd --strip-components=3 ./usr/bin/s3fs
 print_size_and_checksums s3fs
 rm s3fs
 
